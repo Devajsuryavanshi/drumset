@@ -8,9 +8,10 @@ drum[i].addEventListener("click", beats);
 function beats(){
   var btht = this.innerHTML;
   sound(btht);
+  press(btht);
 }
 
-document.addEventListener("keypress", function(){ sound(event.key)});
+document.addEventListener("keypress", function(){ sound(event.key); press(event.key)});
 
 function sound(key){
 
@@ -45,4 +46,11 @@ function sound(key){
     break;
     default: console.log(this.innerHTML);
 }
+}
+function press(key){
+  var press_key = document.querySelector("."+key);
+  press_key.classList.add("pressed");
+  setTimeout(function(){
+    press_key.classList.remove("pressed");
+  }, 140)
 }
